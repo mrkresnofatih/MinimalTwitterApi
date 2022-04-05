@@ -30,6 +30,8 @@ namespace MinimalTwitterApi.Utilities
         {
             switch (exception)
             {
+                case TweetAlreadyLikedException:
+                    return ErrorCodes.TweetAlreadyLikes;
                 case UsernameTakenException:
                     return ErrorCodes.UsernameTaken;
                 case InvalidAccessTokenException:

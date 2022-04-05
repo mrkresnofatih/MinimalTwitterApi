@@ -7,6 +7,7 @@
         public const string InvalidCredentials = "INVALID_CREDENTIALS";
         public const string InvalidAccessToken = "INVALID_ACCESS_TOKEN";
         public const string UsernameTaken = "USERNAME_TAKEN";
+        public const string TweetAlreadyLikes = "TWEET_ALREADY_LIKED";
         public const string Unhandled = "UNHANDLED";
     }
 }
