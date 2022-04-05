@@ -10,16 +10,21 @@ namespace MinimalTwitterApi.Controllers
     {
         public static void AddAppControllers(this IServiceCollection services)
         {
-            services.AddControllers().ConfigureApiBehaviorOptions(options =>
-            {
-                options.InvalidModelStateResponseFactory = context =>
+            services.AddControllers()
+                .ConfigureApiBehaviorOptions(options =>
                 {
-                    var logger = context.HttpContext.RequestServices
-                        .GetRequiredService<ILogger<Startup>>();
-                    logger.LogInformation("Invalid ModelState");
-                    return new OkObjectResult(ResponseHandler.WrapFailure<object>(ErrorCodes.BadRequest));
-                };
-            });
+                    options.InvalidModelStateResponseFactory = context =>
+                    {
+                        var logger = context.HttpContext.RequestServices
+                            .GetRequiredService<ILogger<Startup>>();
+                        logger.LogInformation("Invalid ModelState");
+                        return new OkObjectResult(ResponseHandler.WrapFailure<object>(ErrorCodes.BadRequest));
+                    };
+                })
+                .AddNewtonsoftJson(opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
         }
     }
 }

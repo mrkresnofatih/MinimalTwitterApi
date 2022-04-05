@@ -8,6 +8,8 @@ namespace MinimalTwitterApi.Repositories
         {
             services.AddScoped<PlayerRepository>();
             services.AddSingleton<PlayerAccessTokenCache>();
+            services.AddScoped<ContentRepository>();
+            services.AddScoped<TweetRepository>();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MinimalTwitterApi.Models;
+using MinimalTwitterApi.Models.Content;
 
 namespace MinimalTwitterApi.Contexts
 {
@@ -12,6 +13,10 @@ namespace MinimalTwitterApi.Contexts
         }
         
         public DbSet<Player> Players { get; set; }
+        
+        public DbSet<Content> Contents { get; set; }
+        
+        public DbSet<Tweet> Tweets { get; set; }
     }
 
     public static class MtDbConfig
