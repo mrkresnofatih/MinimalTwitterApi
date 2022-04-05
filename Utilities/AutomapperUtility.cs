@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using MinimalTwitterApi.Models;
+using MinimalTwitterApi.Models.Content;
 
 namespace MinimalTwitterApi.Utilities
 {
@@ -22,8 +23,14 @@ namespace MinimalTwitterApi.Utilities
     {
         public AutomapperProfile()
         {
+            // Player
             CreateMap<Player, PlayerCreateDto>().ReverseMap();
             CreateMap<Player, PlayerGetDto>().ReverseMap();
+            
+            // Content
+            CreateMap<Content, ContentCreateDto>().ReverseMap();
+            CreateMap<Tweet, ContentCreateDto>().ReverseMap();
+            CreateMap<Tweet, TweetGetDto>().ReverseMap();
         }
     }
 }

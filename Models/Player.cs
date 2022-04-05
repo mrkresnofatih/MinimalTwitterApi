@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using MinimalTwitterApi.Models.Content;
 
 namespace MinimalTwitterApi.Models
 {
@@ -29,6 +31,10 @@ namespace MinimalTwitterApi.Models
 
         [Required]
         public long CreatedAt { get; set; }
+        
+        public List<Tweet> Tweets { get; set; }
+        
+        public List<Content.Content> Contents { get; set; }
     }
 
     public class PlayerCreateDto
