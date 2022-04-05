@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MinimalTwitterApi.Constants.CustomException;
 using MinimalTwitterApi.Models.Content;
 using MinimalTwitterApi.Models.Factories;
 using MinimalTwitterApi.Repositories;
@@ -41,6 +42,13 @@ namespace MinimalTwitterApi.Service
         {
             var playerId = _playerAccessTokenUtility.GetPlayerIdFromToken(token);
 
+            var alreadyLiked = await _tweetRepository.LikeExists(tweetId, playerId);
+
+            if (alreadyLiked)
+            {
+                throw new TweetAlreadyLikedException();
+            }
+            
             var contentDraft = ContentFactory.BuildNewContentLike(playerId, tweetId);
             var newContentId = await _contentRepository.AddOne(contentDraft);
 

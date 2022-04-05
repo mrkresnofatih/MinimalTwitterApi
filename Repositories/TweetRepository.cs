@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MinimalTwitterApi.Constants;
 using MinimalTwitterApi.Constants.CustomException;
 using MinimalTwitterApi.Contexts;
 using MinimalTwitterApi.Models;
@@ -56,6 +57,18 @@ namespace MinimalTwitterApi.Repositories
             }
 
             return foundTweet;
+        }
+
+        public async Task<bool> LikeExists(long tweetId, long playerId)
+        {
+            return await _mtDbContext
+                .Contents
+                .Where(p => 
+                    p.TweetId == tweetId && 
+                    p.PlayerId == playerId && 
+                    p.ContentType == ContentTypes.Like)
+                .Select(_ => true)
+                .SingleOrDefaultAsync();
         }
     }
 }
