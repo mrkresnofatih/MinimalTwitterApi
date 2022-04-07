@@ -3,6 +3,5 @@ services:
   redis:
     container_name: "redis"
     image: redis:6.2
-    command: redis-server --requirepass password
     ports:
       - "6379:6379"
