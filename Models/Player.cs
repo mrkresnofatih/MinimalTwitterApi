@@ -35,6 +35,8 @@ namespace MinimalTwitterApi.Models
         public List<Tweet> Tweets { get; set; }
         
         public List<Content.Content> Contents { get; set; }
+        
+        public List<Connection> Connections { get; set; }
     }
 
     public class PlayerCreateDto

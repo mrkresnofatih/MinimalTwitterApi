@@ -8,6 +8,7 @@ namespace MinimalTwitterApi.Service
         {
             services.AddScoped<AuthService>();
             services.AddScoped<ContentService>();
+            services.AddScoped<ConnectionService>();
         }
     }
 }

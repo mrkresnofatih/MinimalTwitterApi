@@ -17,6 +17,8 @@ namespace MinimalTwitterApi.Contexts
         public DbSet<Content> Contents { get; set; }
         
         public DbSet<Tweet> Tweets { get; set; }
+        
+        public DbSet<Connection> Connections { get; set; }
     }
 
     public static class MtDbConfig
